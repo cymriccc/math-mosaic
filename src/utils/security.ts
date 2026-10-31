@@ -45,3 +45,42 @@ export function exportSecureSVG(filename: string, rawSvg: string): void {
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 }
+
+// Converts canvas contents or SVG DOM elements into downloadable image files
+export function downloadPatternImage(
+  element: HTMLCanvasElement | SVGSVGElement | null,
+  filename: string = 'math-mosaic-pattern',
+  format: 'png' | 'svg' = 'png'
+): void {
+  if (!element) return;
+
+  const sanitizedFilename = sanitizeString(filename)
+    .toLowerCase()
+    .replace(/\s+/g, '-');
+
+  const ext = format === 'svg' ? 'svg' : 'png';
+
+  if (element instanceof HTMLCanvasElement) {
+    const dataUrl = element.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = `${sanitizedFilename}.${ext}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else if (element instanceof SVGSVGElement) {
+    const serializer = new XMLSerializer();
+    let svgString = serializer.serializeToString(element);
+    svgString = sanitizeSVG(svgString);
+
+    const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${sanitizedFilename}.${ext}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+}

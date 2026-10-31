@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Dices, Info, Download, Palette, ChevronDown } from 'lucide-react';
+import { downloadPatternImage } from './utils/security';
 
 export default function App() {
   const [shapeType, setShapeType] = useState("hexagon");
@@ -59,7 +60,7 @@ export default function App() {
     for (let i = -2; i < Math.ceil(window.innerWidth / h_dist) + 4; i++) {
       for (let j = -2; j < Math.ceil(window.innerHeight / v_dist) + 4; j++) {
         ctx.save();
-        let x = i * h_dist;
+        const x = i * h_dist;
         let y = j * v_dist;
         if (shapeType !== "square" && i % 2 !== 0) y += v_dist / 2;
 
@@ -85,6 +86,10 @@ export default function App() {
     window.addEventListener('resize', render);
     return () => window.removeEventListener('resize', render);
   }, [render]);
+
+  const handleExport = () => {
+    downloadPatternImage(canvasRef.current, `math-mosaic-${seed}`, 'png');
+  };
 
   return (
     <div className="relative h-screen w-full bg-[#f8fafc] overflow-hidden select-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -149,9 +154,10 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mt-auto pt-6 text-center space-y-4 border-t border-slate-100">
-            <button onClick={() => setSeed(Math.random().toString(36).substring(7))} className="w-full bg-white border-2 border-slate-900 text-[#0f172a] py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm"><Dices size={18} /> Regenerate Seed</button>
-            <div className="space-y-1">
+        <div className="mt-auto pt-6 text-center space-y-3 border-t border-slate-100">
+            <button onClick={() => setSeed(Math.random().toString(36).substring(7))} className="w-full bg-white border-2 border-slate-900 text-[#0f172a] py-3.5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm"><Dices size={18} /> Regenerate Seed</button>
+            <button onClick={handleExport} className="w-full bg-[#0f172a] text-white py-3.5 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-md"><Download size={18} /> Export Image</button>
+            <div className="space-y-1 pt-1">
               <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] opacity-80 italic">Developed by cymriccc</p>
               <p className="text-[8px] text-slate-300 font-medium uppercase tracking-[0.1em]">National University MOA</p>
             </div>
