@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# Math Mosaic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, web-based tessellation engine designed to generate dynamic geometric patterns in real time. Built with React, TypeScript, and the HTML5 Canvas API, Math Mosaic allows users to customize, manipulate, and export mathematical artwork.
 
-Currently, two official plugins are available:
+🚀 **Live Demo:** [math-mosaic.vercel.app](https://math-mosaic.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+* **Interactive Tessellation Engine:** Render geometric patterns using hexagons, triangles, and squares via HTML5 Canvas.
+* **Dynamic Canvas Controls:** Real-time adjustments for pattern complexity, canvas zoom, and rotation angle.
+* **Seed-Based Generation:** Reproduce and share unique procedural patterns using alphanumeric seeds.
+* **Custom Color Palettes:** Choose from preset visual themes to style generated mosaics.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Framework:** [React](https://react.dev/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Rendering:** HTML5 Canvas API
+* **Deployment:** [Vercel](https://vercel.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Ensure you have [Node.js](https://nodejs.org/) installed on your system (v18 or higher recommended).
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/cymriccc/math-mosaic.git
+   cd math-mosaic
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open `http://localhost:5173` in your browser.
+
+---
+
+## Available Scripts
+
+* `npm run dev` – Starts the Vite development server.
+* `npm run build` – Compiles TypeScript and builds the production bundle.
+* `npm run preview` – Locally previews the production build.
+* `npm run lint` – Runs ESLint to check for code issues.
+
+---
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
