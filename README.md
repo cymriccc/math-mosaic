@@ -6,7 +6,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0%2B-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
-An interactive, web-based tessellation engine designed to generate dynamic geometric patterns in real time. Built with React, TypeScript, and the HTML5 Canvas API, Math Mosaic allows users to customize, manipulate, proceduralize, and export mathematical artwork.
+An interactive, web-based tessellation engine designed to generate dynamic geometric patterns in real time. Built with React, TypeScript, and the HTML5 Canvas API, Math Mosaic features dark-glassmorphism controls, precise shape tessellation math, customizable color palettes, and hidden secret seeds.
 
 🚀 **Live Demo:** [https://math-mosaic.vercel.app](https://math-mosaic.vercel.app)
 
@@ -17,11 +17,11 @@ An interactive, web-based tessellation engine designed to generate dynamic geome
 Math Mosaic bridges procedural geometry and web-based rendering. By utilizing vector transformations directly on the HTML5 Canvas API, the engine supports real-time manipulation without reliance on static SVG overhead or pre-rendered assets.
 
 ### Features
-- **Interactive Tessellation Engine:** Render complex geometric patterns using regular polygons (hexagons, triangles, and squares) via high-performance HTML5 Canvas operations.
-- **Dynamic Controls:** Fine-tune pattern density, canvas zoom scale, offset padding, and rotation angles with instant UI state updates.
-- **Seed-Based Procedural Generation:** Generate, recreate, and share deterministic mathematical artwork using custom alphanumeric seeds.
-- **Custom Color Palettes & Themes:** Choose from preset mathematical visual palettes or apply custom dark/light theme modifiers.
-- **Export & Asset Capture:** Render generated vector geometry to high-resolution PNG image exports directly from the client.
+- **Interactive Tessellation Engine:** Render complex geometric patterns using regular polygons—including Classic Hexagons, Triangles (with alternating up/down orientation tiling), Diamonds, and packed Circles/Dots—via high-performance HTML5 Canvas operations.
+- **Local Shape & Grid Control:** Fine-tune pattern density (Complexity 1–10), canvas zoom scale, and individual shape rotation on local origins with instant UI state updates.
+- **Glassmorphism HUD:** Translucent dark-glass control panel with collapsible sidebar animations and clean UI layouts.
+- **Seed-Based Generation & Secret Seeds:** Generate deterministic mathematical artwork using custom alphanumeric seeds.
+- **Custom Color Palettes & Export Suite:** Choose from mathematical visual palettes, copy CSS root variables or raw Hex codes, and export high-resolution PNG image captures directly from the client.
 
 ---
 
@@ -30,7 +30,7 @@ Math Mosaic bridges procedural geometry and web-based rendering. By utilizing ve
 - **Framework:** React 18
 - **Language:** TypeScript
 - **Build Tooling:** Vite
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS & Lucide Icons
 - **Graphics Pipeline:** HTML5 Canvas API
 - **Deployment Platform:** Vercel Continuous Deployment
 
@@ -40,18 +40,18 @@ Math Mosaic bridges procedural geometry and web-based rendering. By utilizing ve
 
 ```text
 math-mosaic/
-├── public/                 # Static assets & favicon icons
+├── public/                # Static assets & favicon icons
 ├── src/
-│   ├── components/         # React UI panels, canvas container, and controls
-│   ├── engine/             # Math logic, matrix transformation & canvas renderer
-│   ├── hooks/              # Custom React hooks for resize & canvas state
-│   ├── utils/              # Seed generator & color palette math
-│   ├── App.tsx             # Primary layout controller
-│   └── main.tsx            # Application entry point
-├── package.json            # Dependencies & script configurations
-├── tsconfig.json           # TypeScript compiler configuration
-├── tailwind.config.js      # Tailwind theme configuration
-└── vite.config.ts          # Vite build optimizations
+│   ├── assets/            # Project SVGs and graphic resources
+│   ├── utils/             # Hashing functions & security helpers
+│   ├── App.css            # Tailwind directives and global layout styles
+│   ├── App.tsx            # Primary layout controller & Canvas rendering loop
+│   ├── index.css          # Base CSS styles
+│   └── main.tsx           # Application entry point
+├── package.json           # Dependencies & script configurations
+├── tsconfig.json          # TypeScript compiler configuration
+├── tailwind.config.js     # Tailwind theme configuration
+└── vite.config.ts         # Vite build optimizations
 ```
 
 ---
@@ -60,8 +60,8 @@ math-mosaic/
 
 ### Prerequisites
 
-* **Node.js**: `v18.0.0` or higher
-* **npm** or **pnpm** package manager
+- **Node.js**: `v18.0.0` or higher
+- **npm** or **pnpm** package manager
 
 ### Local Development Setup
 
